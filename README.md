@@ -15,7 +15,7 @@ Replace `<k>` with the desired word length (between 5 and 8).
 
 To build Wordle50 from source, run the following command:
 ```shell
-make wordle
+make wordle50
 ```
 
 This will compile the program and create the wordle50 executable.
