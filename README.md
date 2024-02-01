@@ -1,5 +1,7 @@
 # Wordle50
 
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://https://github.com/Melkor-1/Worlde50/edit/main/LICENSE)
+
 Wordle50 is a command-line word guessing game where you have to guess a word of a specified length. It provides feedback on each guess, helping you figure out the right letters and their positions.
 
 ## Usage
@@ -31,7 +33,3 @@ We welcome contributions to Wordle50! If you'd like to contribute to the project
 * We appreciate your help in improving Wordle50!
 
 Enjoy the game!
-
-## License:
-
-Wordle50 is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
