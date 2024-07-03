@@ -1,6 +1,13 @@
+#undef _POSIX_C_SOURCE
+#undef _XOPEN_SOURCE
+
+#define _POSIX_C_SOURCE 200819
+#define _XOPEN_SOURCE   700
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <strings.h>
 #include <stdbool.h>
 #include <time.h>
 
@@ -107,7 +114,7 @@ static void print_word(const char *restrict guess, size_t wlen,
     putchar('\n');
 }
 
-static inline bool validate_wlen(size_t wlen)
+static inline bool validate_wlen(long int wlen)
 {
     return wlen >= MIN_WORD_LENGTH && wlen <= MAX_WORD_LENGTH;
 }
@@ -179,11 +186,14 @@ int main(int argc, char **argv)
     char options[LIST_SIZE][wlen + 1];
 
     for (size_t i = 0; i < LIST_SIZE; ++i) {
-        fscanf(wlist, "%s", options[i]);
+        if (fscanf(wlist, "%s", options[i]) == -1) {
+            fprintf(stderr, "error: could not read wordlist.\n");
+            return EXIT_FAILURE;
+        }
     }
     
     /* Pseudorandomly select a word for this game. */
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
     const char *const choice = options[rand() % LIST_SIZE];
 
     run_game(LIST_SIZE, wlen, options, choice) ? puts("You won!") : printf("The target word was: %s\n", choice);
